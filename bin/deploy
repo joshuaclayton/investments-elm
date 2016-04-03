@@ -5,6 +5,6 @@ set -e
 
 git checkout master && \
   npm run build && \
-  git subtree split --prefix output -b gh-pages && \
+  git subtree split --prefix dist -b gh-pages && \
   git push -f dist gh-pages:gh-pages && \
   git branch -D gh-pages
