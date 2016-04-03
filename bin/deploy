@@ -3,5 +3,8 @@
 # Exit if any subcommand fails
 set -e
 
-npm run build
-git subtree push --prefix dist origin gh-pages
+git checkout master && \
+  npm run build && \
+  git subtree split --prefix output -b gh-pages && \
+  git push -f dist gh-pages:gh-pages && \
+  git branch -D gh-pages
