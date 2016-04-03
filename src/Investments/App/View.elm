@@ -13,9 +13,26 @@ view address model =
     [ class "container" ]
     [ pageHeader
     , Investments.Calculator.View.view (Signal.forwardTo address UpdateCalculator) model.calculator
+    , pageFooter
     ]
 
 
 pageHeader : Html
 pageHeader =
   h1 [] [ text "Investments" ]
+
+
+pageFooter : Html
+pageFooter =
+  footer
+    []
+    [ p
+        []
+        [ text "Created by "
+        , a [ href "http://joshuaclayton.me" ] [ text "Josh Clayton" ]
+        , text ". "
+        , text "View the source on "
+        , a [ href "https://github.com/joshuaclayton/investments-elm" ] [ text "GitHub" ]
+        , text "."
+        ]
+    ]
