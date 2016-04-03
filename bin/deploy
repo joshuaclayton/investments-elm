@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+npm run build
+git subtree push --prefix dist origin gh-pages

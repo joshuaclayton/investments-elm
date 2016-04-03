@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+npm start

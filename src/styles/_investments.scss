@@ -1,0 +1,75 @@
+.container {
+  @include outer-container;
+}
+
+h1 {
+  color: rgb(78, 150, 78);
+  font-family: 'Vast Shadow', cursive;
+  font-size: 4em;
+  font-weight: normal;
+  margin: 0;
+  padding-bottom: 2rem;
+}
+
+.chart-wrapper {
+  @include span-columns(8);
+  @include shift(2);
+}
+
+form {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.settings {
+  @include span-columns(3);
+
+  input[type=text], input[type=number] {
+    width: 6rem;
+    display: inline-block;
+  }
+}
+
+.results {
+  @include span-columns(9);
+  @include omega;
+
+  table {
+    font-family: 'Droid Sans Mono', courier, monospace;
+    font-size: .9em;
+
+    tbody {
+      tr:nth-of-type(2n) {
+        background-color: #f0f0f0;
+      }
+    }
+
+    th, .number {
+      text-align: right;
+      padding-right: .5em;
+    }
+
+    th, td {
+      &:nth-of-type(1) { width: 4%; }
+      &:nth-of-type(2) { width: 9%; }
+      &:nth-of-type(3) { width: 23%; }
+      &:nth-of-type(4) { width: 20%; }
+      &:nth-of-type(5) { width: 20%; }
+      &:nth-of-type(6) { width: 24%; }
+    }
+  }
+}
+
+#chart svg {
+  height: 300px;
+  padding-left: 1rem;
+}
+
