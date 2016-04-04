@@ -4,20 +4,15 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Numeral
 import Investments.Calculator.Model exposing (..)
-import Investments.YearlyCalculation.Model exposing (..)
 
 
-view : Investments.Calculator.Model.Model -> Html
+view : Model -> Html
 view model =
-  let
-    calculations =
-      calculateYears model
-  in
-    section
-      []
-      [ chart
-      , resultsTable calculations
-      ]
+  section
+    []
+    [ chart
+    , resultsTable model.calculations
+    ]
 
 
 chart : Html
@@ -25,7 +20,7 @@ chart =
   div [ id "chart2" ] [ svg [] [] ]
 
 
-resultsTable : List Investments.YearlyCalculation.Model.Model -> Html
+resultsTable : List YearlyCalculation -> Html
 resultsTable calculations =
   table
     []
@@ -47,7 +42,7 @@ resultsTable calculations =
     ]
 
 
-renderYearlyCalculation : Investments.YearlyCalculation.Model.Model -> Html
+renderYearlyCalculation : YearlyCalculation -> Html
 renderYearlyCalculation yearlyCalculation =
   tr
     []

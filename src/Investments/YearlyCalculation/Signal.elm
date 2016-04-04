@@ -1,16 +1,15 @@
 module Investments.YearlyCalculation.Signal (signal) where
 
 import Json.Encode as Json exposing (encode, object, string, float, list)
-import Investments.App.Model
-import Investments.YearlyCalculation.Model exposing (calculateYears)
+import Investments.App.Model exposing (Model)
 
 
-signal : Signal Investments.App.Model.Model -> Signal String
+signal : Signal Model -> Signal String
 signal model =
   Signal.map (\model' -> encode 0 (modelToJsonPayload model')) model
 
 
-modelToJsonPayload : Investments.App.Model.Model -> Json.Value
+modelToJsonPayload : Model -> Json.Value
 modelToJsonPayload model =
   let
     groupingList =
@@ -33,7 +32,7 @@ modelToJsonPayload model =
             , string ""
             ]
       in
-        List.map process <| calculateYears model.calculator
+        List.map process model.calculator.calculations
   in
     list
       ([ groupingList ] ++ values)

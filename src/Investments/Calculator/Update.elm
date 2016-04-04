@@ -1,7 +1,7 @@
 module Investments.Calculator.Update (Action(..), update) where
 
 import Effects exposing (Effects)
-import Investments.Calculator.Model exposing (Model)
+import Investments.Calculator.Model exposing (Model, recalculateYears)
 
 
 type Action
@@ -20,16 +20,16 @@ update action model =
       ( model, Effects.none )
 
     SetPrincipal value ->
-      ( { model | principal = value }, Effects.none )
+      ( recalculateYears { model | principal = value }, Effects.none )
 
     SetStartingMonthlyContribution value ->
-      ( { model | startingMontlyContribution = value }, Effects.none )
+      ( recalculateYears { model | startingMontlyContribution = value }, Effects.none )
 
     SetAnnualInvestmentIncrease value ->
-      ( { model | annualInvestmentIncrease = value / 100 }, Effects.none )
+      ( recalculateYears { model | annualInvestmentIncrease = value / 100 }, Effects.none )
 
     SetAnnualRateOfReturn value ->
-      ( { model | annualRateOfReturn = value / 100 }, Effects.none )
+      ( recalculateYears { model | annualRateOfReturn = value / 100 }, Effects.none )
 
     SetYears value ->
-      ( { model | years = value }, Effects.none )
+      ( recalculateYears { model | years = value }, Effects.none )
